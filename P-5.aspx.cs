@@ -1,0 +1,25 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.UI;
+using System.Web.UI.WebControls;
+
+namespace test_practicals
+{
+    public partial class P_4 : System.Web.UI.Page
+    {
+        protected void Page_Load(object sender, EventArgs e)
+        {
+
+        }
+        protected void rbFruit_CheckedChanged(object sender, EventArgs e)
+        {
+            RadioButton selectedRadioButton = (RadioButton)sender;
+            if (selectedRadioButton.Checked)
+            {
+                lblSelectedFruit.Text = "Selected fruit: " + selectedRadioButton.Text;
+            }
+        }
+    }
+}
