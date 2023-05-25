@@ -1,0 +1,72 @@
+# ASPX file code:
+
+<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="P-3.aspx.cs" Inherits="test_practicals.DDL_change_color_page" %>
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title>Color Change Example</title>
+    <style>
+        .color-change {
+            width: 100%;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 30px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <form id="form1" runat="server">
+        <div class="color-change" id="colorChangeDiv" runat="server">
+            Color Change Example
+        </div>
+        <br />
+        <asp:DropDownList ID="ddlColors" runat="server">
+            <asp:ListItem Text="Red" Value="red"></asp:ListItem>
+            <asp:ListItem Text="Blue" Value="blue"></asp:ListItem>
+            <asp:ListItem Text="Green" Value="green"></asp:ListItem>
+        </asp:DropDownList>
+        <br /><br />
+        <asp:Button ID="btnChangeColor" runat="server" Text="Change Color" OnClick="btnChangeColor_Click" />
+    </form>
+</body>
+</html>
+
+
+
+##aspx.cs(logic code):-
+
+using System;
+using System.Web.UI.HtmlControls;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.UI;
+using System.Web.UI.WebControls;
+
+namespace test_practicals
+{
+    public partial class DDL_change_color_page : System.Web.UI.Page
+    {
+        protected void Page_Load(object sender, EventArgs e)
+        {
+        }
+
+        protected void btnChangeColor_Click(object sender, EventArgs e)
+        {
+            // Get the selected color from the DropDownList
+            string selectedColor = ddlColors.SelectedValue;
+
+            // Find the colorChangeDiv control and change its background color
+            HtmlGenericControl colorChangeDiv = (HtmlGenericControl)FindControl("colorChangeDiv");
+            if (colorChangeDiv != null)
+            {
+                colorChangeDiv.Style["background-color"] = selectedColor;
+            }
+        }
+    }
+}
